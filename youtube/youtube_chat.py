@@ -53,7 +53,7 @@ def get_response_from_query(db, query, k=4):
     system_message_prompt = SystemMessagePromptTemplate.from_template(template)
 
     # Human question prompt
-    human_template = "Answer the following question: {question}"
+    human_template = "Answer the following question: {question}, if you don't know the answer say so truthfully"
     human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
 
     chat_prompt = ChatPromptTemplate.from_messages(
@@ -68,9 +68,9 @@ def get_response_from_query(db, query, k=4):
 
 
 # Example usage:
-video_url = "https://www.youtube.com/watch?v=L_Guz73e6fw"
+video_url = "https://www.youtube.com/watch?v=NYSWn1ipbgg&list=WL"
 db = create_db_from_youtube_video_url(video_url)
 
-query = "What are they saying about Microsoft?"
+query = "What are they suggesting to use to make new models?"
 response, docs = get_response_from_query(db, query)
 print(textwrap.fill(response, width=50))

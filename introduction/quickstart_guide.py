@@ -30,7 +30,6 @@ prompt = PromptTemplate(
 )
 
 prompt.format(product="Smart Apps using Large Language Models (LLMs)")
-
 # --------------------------------------------------------------
 # Chains: Combine LLMs and prompts in multi-step workflows
 # --------------------------------------------------------------
@@ -53,7 +52,7 @@ print(chain.run("AI Chatbots for Dental Offices"))
 llm = OpenAI()
 
 get_all_tool_names()
-tools = load_tools(["wikipedia", "llm-math"], llm=llm)
+tools = load_tools(["wikipedia", "llm-math", "python_repl"], llm=llm)
 
 # Finally, let's initialize an agent with the tools, the language model, and the type of agent we want to use.
 agent = initialize_agent(
@@ -62,7 +61,8 @@ agent = initialize_agent(
 
 # Now let's test it out!
 result = agent.run(
-    "In what year was python released and who is the original creator? Multiply the year by 3"
+    "I have a jupyter notebook called 'Model Eval.*' find it and answer all the questions, save a copy of the notebook in the same folder. The folder is in : /home/altonormz/Desktop/ITC/LangChain/langchain-experiments/introduction"
+
 )
 print(result)
 
